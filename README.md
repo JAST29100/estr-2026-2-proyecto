@@ -16,14 +16,14 @@ su nota del proyecto es 0.0.
 
 | Nombre completo | Código | Correo institucional | Usuario de GitHub |
 |---|---|---|---|
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
+| Juan Franco | 9035048 | juanfranco2009@javerianacali.edu.co | JEY404 |
+| Joseph Salazar | 9038594 | jast29100@javerianacali.edu.co | JAST29100 |
+| Sergio Orjuela | 9040203 | sorjuelarios@javerianacali.edu.co | PenroseLI |
 
-**Escenario escogido:** (A inventario / B frecuencias / C turnos / D índice)
+**Escenario escogido:** A: inventario
 
-- Estructura escrita desde cero:
-- Estructura de la biblioteca contra la que se compara:
+- Estructura escrita desde cero: Lista Enlazada Simple 
+- Estructura de la biblioteca contra la que se compara: Forward List
 
 ## Lo primero
 

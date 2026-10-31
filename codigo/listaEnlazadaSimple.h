@@ -1,9 +1,8 @@
-// Autores: Joseph Salazar 9038594, Juan Franco 9035048
+// Autores: Joseph Salazar 9038594, Juan Franco 9035048, Sergio Orjuela 9040203
 
 #ifndef LISTA_ENLAZADA_SIMPLE
 #define LISTA_ENLAZADA_SIMPLE
 
-#include <array>
 #include <cassert>
 
 const int CAPACIDAD = 100;

@@ -1,3 +1,5 @@
+// Autores: Sergio Orjuela 9040203, Joseph Salazar 9038594, Juan Jose Franco 9035048
+
 #ifndef ARTICULO_H
 #define ARTICULO_H
 

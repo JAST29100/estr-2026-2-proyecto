@@ -16,3 +16,9 @@ hizo y qué quedó pendiente. La entrada más reciente va arriba.
 - Quiénes: Joseph, Sergio y Juan Jose.
 - Qué hicimos: Creamos el TAD Lista Enlazada que funciona debajo de la implementacion de la tienda.
 - Qué quedó pendiente: Queda pendiente implementar el sistema de inventario de la tienda, pero ya esta implementada la lista enlazada.
+
+## 2026-10-06
+
+- Quiénes: Joseph, Sergio y Juan Jose.
+- Qué hicimos: Acabamos el informe, casos limites y probamos que el codigo funcionara correctamente.
+- Qué quedó pendiente: Nada, el avance esta finalizado

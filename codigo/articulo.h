@@ -9,9 +9,9 @@
 
 class Articulo{
     private:
-        int codigo;
-        std::string nombre;
-        int cantidad;
+        int codigo{};
+        std::string nombre{};
+        int cantidad{};
 
     public:
         // Garantizamos codigo positivo, nombre valido y cantidad no negativa antes de inicializar
@@ -29,7 +29,7 @@ class Articulo{
         }
         // Devolvemos por referencia el tipo string, el primer const evita modificarlo de forma externa
         // El segundo const garantiza que el método no lo toca, y con ambos se preserva encapsulamiento
-        const std::string &getNombre() const{
+        const std::string& getNombre() const{
             return this->nombre;
         }
         int getCantidad() const{

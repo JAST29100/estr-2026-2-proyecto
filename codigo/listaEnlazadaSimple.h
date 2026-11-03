@@ -101,10 +101,28 @@ class Lista {
         for(int i{}; i < p; i++) { actual = actual->siguiente; }
         return actual;
     }
+
+    template<typename T, typename F>
+    bool consultar(T obtener_atributo, F buscado){
+        Nodo<Elemento>* actual{cabeza};
+        bool encontrado{false};
+
+        while(actual != nullptr && !encontrado) {
+            F atributo = obtener_atributo(actual->dato);
+            if(atributo != buscado) {
+                actual = actual->siguiente;
+            } else {
+                encontrado = true;
+            }
+        }
+        return encontrado;
+    }
+
     template<typename T, typename F>
     bool consultar(T obtener_atributo, F buscado, Nodo<Elemento>* &nodo_obj){
         Nodo<Elemento>* actual{cabeza};
         bool encontrado{false};
+
         while(actual != nullptr && !encontrado) {
             F atributo = obtener_atributo(actual->dato);
             if(atributo != buscado) {
@@ -116,24 +134,26 @@ class Lista {
         }
         return encontrado;
     }
+
     template<typename T, typename F>
     bool consultar(T obtener_atributo, F buscado, int &pos){
         Nodo<Elemento>* actual{cabeza};
         bool encontrado{false};
         int i{};
+
         while(actual != nullptr && !encontrado) {
             F atributo = obtener_atributo(actual->dato);
             if(atributo != buscado) {
                 actual = actual->siguiente;
                 i++;
             } else {
-                actual = encontrado;
                 encontrado = true;
                 pos = i;
             }
         }
         return encontrado;
     }
+
     int tamano() const { return n; }
     bool vacia() const { return n == 0; }
 

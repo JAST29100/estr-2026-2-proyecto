@@ -5,8 +5,6 @@
 
 #include <cassert>
 
-const int CAPACIDAD = 100;
-
 template <typename Elemento>
 struct Nodo {
     Elemento dato;
@@ -19,7 +17,6 @@ struct Nodo {
 
 template <typename Elemento>
 class Lista {
-    private:
     Nodo<Elemento>* cabeza;
     Nodo<Elemento>* cola;
     int n;
@@ -33,7 +30,7 @@ class Lista {
     }
 
     void insertar(int p, Elemento e) {
-        assert(p >= 0 && p <= n && n < CAPACIDAD);
+        assert(p >= 0 && p <= n);
 
         Nodo<Elemento>* nuevo {new Nodo(e)};
         if(vacia()){
@@ -55,8 +52,6 @@ class Lista {
         n++;
     }
     void agregar(Elemento e) {
-        assert(n < CAPACIDAD);
-
         Nodo<Elemento>* nuevo {new Nodo(e)};
         if(vacia()) {
             cabeza = nuevo;
@@ -102,55 +97,23 @@ class Lista {
         return actual;
     }
 
-    template<typename T, typename F>
-    bool consultar(T obtener_atributo, F buscado){
-        Nodo<Elemento>* actual{cabeza};
-        bool encontrado{false};
-
-        while(actual != nullptr && !encontrado) {
-            F atributo = obtener_atributo(actual->dato);
-            if(atributo != buscado) {
-                actual = actual->siguiente;
-            } else {
-                encontrado = true;
-            }
-        }
-        return encontrado;
-    }
-
-    template<typename T, typename F>
-    bool consultar(T obtener_atributo, F buscado, Nodo<Elemento>* &nodo_obj){
-        Nodo<Elemento>* actual{cabeza};
-        bool encontrado{false};
-
-        while(actual != nullptr && !encontrado) {
-            F atributo = obtener_atributo(actual->dato);
-            if(atributo != buscado) {
-                actual = actual->siguiente;
-            } else {
-                encontrado = true;
-                nodo_obj = actual;
-            }
-        }
-        return encontrado;
-    }
-
-    template<typename T, typename F>
-    bool consultar(T obtener_atributo, F buscado, int &pos){
-        Nodo<Elemento>* actual{cabeza};
-        bool encontrado{false};
+    template<typename Getter, typename Valor>
+    Nodo<Elemento>* consultar(Getter obtener_atributo, Valor buscado, int *indice = nullptr) const {
+        Nodo<Elemento> *actual{cabeza}, *encontrado{};
+        if(indice) { *indice = -1; }
         int i{};
 
-        while(actual != nullptr && !encontrado) {
-            F atributo = obtener_atributo(actual->dato);
-            if(atributo != buscado) {
+        while(actual && !encontrado) {
+            if(obtener_atributo(actual->dato) != buscado) {
                 actual = actual->siguiente;
                 i++;
-            } else {
-                encontrado = true;
-                pos = i;
+            }
+            else {
+                encontrado = actual;
+                if(indice) { *indice = i; }
             }
         }
+
         return encontrado;
     }
 

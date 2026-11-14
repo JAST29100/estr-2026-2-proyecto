@@ -1,7 +1,7 @@
 # Compilación del proyecto. Ajuste FUENTES con los archivos que escriba.
-CC      = g++
-CFLAGS  = -Wall -Wextra -O2
-FUENTES = main.cpp listaEnlazadaSimple.h
+CC       = g++
+CFLAGS   = -Wall -Wextra -O2
+FUENTES  = main.cpp listaEnlazadaSimple.h
 PROGRAMA = proyecto
 
 all: $(PROGRAMA)

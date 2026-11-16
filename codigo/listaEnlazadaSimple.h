@@ -1,7 +1,7 @@
 // Autores: Joseph Salazar 9038594, Juan Franco 9035048, Sergio Orjuela 9040203
 
-#ifndef LISTA_ENLAZADA_SIMPLE
-#define LISTA_ENLAZADA_SIMPLE
+#ifndef LISTA_ENLAZADA_SIMPLE_H
+#define LISTA_ENLAZADA_SIMPLE_H
 
 #include <cassert>
 
@@ -97,6 +97,7 @@ class Lista {
         return actual;
     }
 
+    // Devuelve el nodo buscado, tiene un parametro opcional para devolver el indice del nodo.
     template<typename Getter, typename Valor>
     Nodo<Elemento>* consultar(Getter obtener_atributo, Valor buscado, int *indice = nullptr) const {
         Nodo<Elemento> *actual{cabeza}, *encontrado{};
@@ -122,4 +123,4 @@ class Lista {
 
 };
 
-#endif // LISTA_ENLAZADA_SIMPLE
+#endif // LISTA_ENLAZADA_SIMPLE_H

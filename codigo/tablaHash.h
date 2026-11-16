@@ -35,7 +35,7 @@ inline int siguientePrimo(int num) {
 
         if(es_primo) { return siguiente; }
         siguiente += 2;
-    }
+    }   
 }
 
 template <typename Valor>
@@ -51,7 +51,7 @@ private:
     Nodo<Registro<Valor>>* buscarNodo(int clave) const {
         int posicion {h(clave)};
 
-        return casillas[posicion].consultar(obtenerLlave, clave);
+        return casillas[posicion].consultar(obtenerLlave<Valor>, clave);
     }
 
 public:
@@ -83,7 +83,8 @@ public:
         m = tam;
     }
 
-    Registro<Valor> *buscar(int clave) {
+    // Devuelve un ptr al registro si existe, si no devuelve nullptr
+    Registro<Valor> *consultar(int clave) {
         assert(clave >= 0);
 
         Nodo<Registro<Valor>> *encontrado {buscarNodo(clave)};
@@ -108,20 +109,38 @@ public:
             n++;
         }
     }
-    // Devuelve un ptr al registro si existe, si no devuelve nullptr
-    void eliminar(int clave) {
+    
+    bool eliminar(int clave) {
         assert(clave >= 0);
 
         int posicion {h(clave)};
         int indice{};
+        bool eliminado{};
 
-        casillas[posicion].consultar(obtenerLlave, clave, &indice);
+        casillas[posicion].consultar(obtenerLlave<Valor>, clave, &indice);
 
         if(indice != -1) {
             casillas[posicion].eliminar(indice);
+            eliminado = true;
             n--;
         }
+        return eliminado;
     }
+
+    void listar(){
+        for(int i{}; i < m; i++) {
+            if(!casillas[i].vacia()) {
+                Nodo<Registro<Valor>> *actual{casillas[i].nodo_en(0)};
+
+                while(actual) {
+                    actual->dato.valor.listar();
+                    actual = actual->siguiente;
+            }
+            }
+        }
+    }
+
+    bool vacia() const { return n == 0; }
 };
 
 #endif // TABLA_HASH_H

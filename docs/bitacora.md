@@ -1,5 +1,15 @@
 # Bitácora
 
+## 2026-11-16
+- Quienes: Joseph Salazar
+- Que hicimos: Se le añade rehash con primos a la tabla hash para que no tenga limite de acuerdo a la observacion del avance.
+- Pendiente: Resolver el problema en main usando la tabla y el informe final.
+
+## 2026-11-16
+- Quienes: Joseph Salazar
+- Que hicimos: Creamos la estructura de tabla hash.
+- Pendiente: Resolver el problema en main usando la tabla.
+
 ## 2026-11-13  
 - Quienes: Joseph Salazar.
 - Que hicimos: Se corrigieron las implementaciones de ListaEnlazada, Articulo y main de acuerdo a las observaciones del avance. Se verificaron las operaciones de inserción, eliminación, asignación y consulta, además de ajustar la lógica de búsqueda. Tambien se arreglaron las entradas de la bitacora para que queden acorde a los commits y el informe del avance se arreglo de acuerdo a las observaciones.

@@ -56,12 +56,8 @@ int main() {
             }
         }
         else if(strcmp(comando, "LISTAR") == 0) {
-            if(!inventario.vacia()) {
-                Nodo<Articulo>* actual{ inventario.nodo_en(0) }; // Vamos a recorrer toda la lista partiendo del nodo cabeza hasta n
-                for (int j{}; j < inventario.tamano(); j++) {
-                    actual->dato.listar();
-                    actual = actual->siguiente;
-                }
+            if (!inventario.vacia()){
+                inventario.listar();
             }
         }
     }

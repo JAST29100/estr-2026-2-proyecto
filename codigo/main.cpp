@@ -1,4 +1,4 @@
-// Autores: Sergio Orjuela 9040203
+// Autores: Sergio Orjuela 9040203 Joseph Salazar 9038594 Juan Franco 9035048
 
 #include "tablaHash.h"
 #include "articulo.h"
@@ -18,7 +18,7 @@ int main() {
             scanf("%d %30s %d", &codigo, nombre, &cantidad);
             if (inventario.consultar(codigo)) { printf("repetido\n"); }
             else{
-                inventario.insertar(codigo, Articulo(codigo,nombre,cantidad));
+                inventario.agregar(codigo, Articulo(codigo,nombre,cantidad));
                 printf("ok\n");
             }
         }
@@ -51,7 +51,7 @@ int main() {
         else if(strcmp(comando, "LISTAR") == 0) {
             if (!inventario.vacia()){
                 inventario.listar();
-            }    
+            }
         }
     }
 

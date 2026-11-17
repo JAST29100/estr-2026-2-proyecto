@@ -1,4 +1,4 @@
-// Autores: Joseph Salazar 9038594
+// Autores: Joseph Salazar 9038594 Sergio Orjuela 9040203 Juan Franco 9035048
 
 #ifndef TABLA_HASH_H
 #define TABLA_HASH_H
@@ -6,7 +6,7 @@
 #include "listaEnlazadaSimple.h"
 #include <cassert>
 
-// Registro es una pareja de Llave y Valor.
+// Registro es una pareja de Llave y Valor
 template <typename Valor>
 struct Registro {
     int llave{};
@@ -16,13 +16,13 @@ struct Registro {
     Registro(int l, Valor v): llave{l}, valor{v} {}
 };
 
-// Devuelve la llave de un registro.
+// Devuelve la llave de un registro
 template <typename Valor>
 int obtenerLlave(const Registro<Valor>& r) {
     return r.llave;
 }
 
-// Devuelve el primo estrictamente mayor mas cercano al num.
+// Devuelve el primo estrictamente mayor mas cercano al num
 inline int siguientePrimo(int num) {
     int siguiente{num+1};
     if(siguiente > 2 && siguiente % 2 == 0) { siguiente++; }
@@ -35,7 +35,7 @@ inline int siguientePrimo(int num) {
 
         if(es_primo) { return siguiente; }
         siguiente += 2;
-    }   
+    }
 }
 
 template <typename Valor>
@@ -69,12 +69,13 @@ public:
 
         Lista<Registro<Valor>> *n_casillas {new Lista<Registro<Valor>>[tam]};
         for(int i{}; i < m; i++) {
-            Nodo<Registro<Valor>> *actual{casillas[i].nodo_en(0)};
-
-            while(actual) {
-                int posicion{actual->dato.llave % tam};
-                n_casillas[posicion].agregar(actual->dato);
-                actual = actual->siguiente;
+            if (!casillas[i].vacia()) {
+                Nodo<Registro<Valor>> *actual{casillas[i].nodo_en(0)};
+                while(actual) {
+                    int posicion{actual->dato.llave % tam};
+                    n_casillas[posicion].agregar(actual->dato);
+                    actual = actual->siguiente;
+                }
             }
         }
 
@@ -94,7 +95,7 @@ public:
 
         return res;
     }
-    void insertar(int clave, Valor valor) {
+    void agregar(int clave, Valor valor) {
         assert(clave >= 0);
 
         Nodo<Registro<Valor>> *encontrado{buscarNodo(clave)};
@@ -109,7 +110,7 @@ public:
             n++;
         }
     }
-    
+
     bool eliminar(int clave) {
         assert(clave >= 0);
 
@@ -139,8 +140,8 @@ public:
             }
         }
     }
-
-    bool vacia() const { return n == 0; }
+    int tamano() const {return n;};
+    bool vacia() const {return n == 0;}
 };
 
 #endif // TABLA_HASH_H

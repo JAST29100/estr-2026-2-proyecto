@@ -117,7 +117,15 @@ class Lista {
 
         return encontrado;
     }
-
+    void listar() const {
+        if(!vacia()) {
+            Nodo<Elemento>* actual{ nodo_en(0) }; // Vamos a recorrer toda la lista partiendo del nodo cabeza hasta n
+            for (int j{}; j < tamano(); j++) {
+                actual->dato.listar();
+                actual = actual->siguiente;
+            }
+        }
+    }
     int tamano() const { return n; }
     bool vacia() const { return n == 0; }
 

@@ -1,14 +1,18 @@
 # Bitácora
+## 2026-11-16
+Quienes: Juan Franco y Joseph Salazar
+Que hicimos: Se añade el informe final, que explica la complejidad del codigo, el contexto, su funcionamiento y comparacion con el unordered map, ademas se agregan varios main para poder correr las pruebas de tiempo como mainUmap y mainMap, ademas se modifico el Makefile haciendo posible especificar la cantidad de veces q se desean ejecutar las pruebas, ademas de pequeños retoques en partes de codigo como tablaHash
+Pendiente: nada, todo finalizado
 
 ## 2026-11-16
 - Quienes: Sergio Orjuela
-- Que hicimos: Se añade la imlementación main para tablaHash, junto a métodos estándar análogos a lista inicial, como vacia y consultar.
+- Que hicimos: Se añade la implementación main para tablaHash, junto a métodos estándar análogos a lista inicial, como vacia y consultar.
   Adicionalmente se realiza una lógica de control con bandera booleana para dar feedback al usuario en eliminar (en caso de repetidos).
   Se conserva el main anterior como mainListaEnlazadaSimple para realizar pruebas y comparaciones.
 - Pendiente: Redactar el informe final y las pruebas.
 
 ## 2026-11-16
-- Quienes: Joseph Salazar
+- Quienes: Joseph Salazar y Juan Franco
 - Que hicimos: Se le añade rehash con primos a la tabla hash para que no tenga limite de acuerdo a la observacion del avance.
 - Pendiente: Resolver el problema en main usando la tabla y el informe final.
 

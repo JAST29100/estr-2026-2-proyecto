@@ -43,28 +43,33 @@ pruebas: $(BIN_HASH) $(BIN_LISTA) $(BIN_MAP) $(BIN_UNORDERED)
 	done
 
 
-N ?= 10
+N ?= 20
+CSV = ../datos/benchmark.csv
 
 benchmark: all
-	@if ! echo "$(N)" | grep -Eq '^[0-9]+$$' || [ "$(N)" -eq 0 ]; then \
-		echo "Error: N debe ser un entero mayor que 0"; \
-		exit 1; \
-	fi
-	@printf "%-25s | %-12s | %-14s | %-12s | %-12s\n" "Caso de Prueba" "Lista (ms)" "TablaHash (ms)" "Map (ms)" "Unordered (ms)"
-	@printf -- "-----------------------------------------------------------------------------------------------\n"
+	@echo "archivo,n,lista_ms,tabla_hash_ms,map_ms,unordered_ms,repeticiones" > $(CSV)
 	@for entrada in ../datos/*.in; do \
 		if [ -f "$$entrada" ]; then \
 			nombre=$$(basename "$$entrada"); \
+			case $$nombre in \
+				prueba-1.in) n=7 ;; \
+				prueba-2.in) n=30 ;; \
+				prueba-3.in) n=30 ;; \
+				prueba-4.in) n=104 ;; \
+				prueba-5.in) n=10000 ;; \
+				prueba-6.in) n=50000 ;; \
+				prueba-7.in) n=100000 ;; \
+			esac; \
 			for bin in $(BIN_LISTA) $(BIN_HASH) $(BIN_MAP) $(BIN_UNORDERED); do \
 				total=0; \
 				for i in $$(seq 1 $(N)); do \
 					inicio=$$(date +%s%N); \
 					./$$bin < "$$entrada" > /dev/null; \
 					fin=$$(date +%s%N); \
-					tiempo=$$(( (fin-inicio)/1000000 )); \
+					tiempo=$$((fin-inicio)); \
 					total=$$((total+tiempo)); \
 				done; \
-				promedio=$$(awk -v t=$$total -v n=$(N) 'BEGIN { printf "%.3f", t/n }'); \
+				promedio=$$(awk -v t=$$total -v n=$(N) 'BEGIN { printf "%.3f", t/n/1000000 }'); \
 				case $$bin in \
 					$(BIN_LISTA)) t_lista=$$promedio ;; \
 					$(BIN_HASH)) t_hash=$$promedio ;; \
@@ -72,10 +77,9 @@ benchmark: all
 					$(BIN_UNORDERED)) t_unordered=$$promedio ;; \
 				esac; \
 			done; \
-			printf "%-25s | %12s | %14s | %12s | %12s\n" "$$nombre" "$$t_lista" "$$t_hash" "$$t_map" "$$t_unordered"; \
+			echo "$$nombre,$$n,$$t_lista,$$t_hash,$$t_map,$$t_unordered,$(N)" >> $(CSV); \
 		fi; \
 	done
-
 
 clean:
 	rm -f $(BIN_HASH) $(BIN_LISTA) $(BIN_MAP) $(BIN_UNORDERED) *.o /tmp/salida.txt

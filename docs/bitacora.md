@@ -1,8 +1,13 @@
 # Bitácora
+## 2026-11-18
+- Quienes: Joseph Salazar
+- Que hicimos: Correciones finales y limpieza del repositorio.
+- Pendiente: Exposicion del proyecto.
+
 ## 2026-11-16
-Quienes: Juan Franco y Joseph Salazar
-Que hicimos: Se añade el informe final, que explica la complejidad del codigo, el contexto, su funcionamiento y comparacion con el unordered map, ademas se agregan varios main para poder correr las pruebas de tiempo como mainUmap y mainMap, ademas se modifico el Makefile haciendo posible especificar la cantidad de veces q se desean ejecutar las pruebas, ademas de pequeños retoques en partes de codigo como tablaHash
-Pendiente: nada, todo finalizado
+- Quienes: Juan Franco y Joseph Salazar
+- Que hicimos: Se añade el informe final, que explica la complejidad del codigo, el contexto, su funcionamiento y comparacion con el unordered map, ademas se agregan varios main para poder correr las pruebas de tiempo como mainUmap y mainMap, ademas se modifico el Makefile haciendo posible especificar la cantidad de veces q se desean ejecutar las pruebas, ademas de pequeños retoques en partes de codigo como tablaHash
+- Pendiente: nada, todo finalizado
 
 ## 2026-11-16
 - Quienes: Sergio Orjuela
